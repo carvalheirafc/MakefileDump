@@ -1,0 +1,20 @@
+##This is a Java Makefile 
+## By Carvalheirafc
+
+APPDIR = application
+		BUILDIR = build
+BINDIR = bin
+INCDIR = include
+SRCDIR = source 
+TESTDIR = test
+
+CC = javac
+CCFLAGS = -d $(BINDIR)
+SRCFILES = $(wildcard *.java)
+
+CLASSES = $(SRCFILES:.java=.class)
+
+all: $(CLASSES)
+
+%.class: %.java
+	$(CC) $<
