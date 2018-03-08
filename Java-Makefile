@@ -6,9 +6,10 @@ SRCDIR = source
 TESTDIR = test
 
 CC = javac
-CCFLAGS = -d $(BINDIR)
+CCFLAGS = -sourcepath $(SRCDIR):* -d $(BINDIR)
 
 SRCFILES = $(wildcard $(SRCDIR)/*.java)
+
 $(info SRCFILES="$(SRCFILES)")
 
 CLASSES = $(patsubst $(SRCDIR)/%.java, %.class, $(SRCFILES))
@@ -18,6 +19,7 @@ all: $(CLASSES)
 
 %.class: $(SRCDIR)/%.java
 	$(CC) $(CCFLAGS) $<
+
 
 clean: 
 	rm -f $(BINDIR)/*.class 
